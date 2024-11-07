@@ -1,0 +1,22 @@
+PODS:
+  - DocumentScanner (1.0.0)
+
+DEPENDENCIES:
+  - DocumentScanner (from `https://github.com/hatuan314/document_scanner_ios.git`, tag `main`)
+
+EXTERNAL SOURCES:
+  DocumentScanner:
+    :git: https://github.com/hatuan314/document_scanner_ios.git
+    :tag: main
+
+CHECKOUT OPTIONS:
+  DocumentScanner:
+    :git: https://github.com/hatuan314/document_scanner_ios.git
+    :tag: main
+
+SPEC CHECKSUMS:
+  DocumentScanner: 847310cda907523e113c3f7d551ae8195f3680c7
+
+PODFILE CHECKSUM: 3e8b009d03f6c5fff1df236cd2c68335b3ec931d
+
+COCOAPODS: 1.16.2

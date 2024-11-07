@@ -1,0 +1,6 @@
+framework module DocumentScanner {
+  umbrella header "DocumentScanner-umbrella.h"
+
+  export *
+  module * { export * }
+}
