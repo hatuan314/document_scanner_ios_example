@@ -9,7 +9,7 @@ import UIKit
 import PhotosUI
 import DocumentScanner
 
-class ViewController: UIViewController, PHPickerViewControllerDelegate, DocumentScannerDelegate {
+class ViewController: UIViewController, PHPickerViewControllerDelegate {
     func didFinishConvertingToPDF(urlPaths: [String]) {
         for (_, path) in urlPaths.enumerated() {
             print("didFinishConvertingToPDF: \(path)")
@@ -23,41 +23,43 @@ class ViewController: UIViewController, PHPickerViewControllerDelegate, Document
     override func viewDidLoad() {
         super.viewDidLoad()
         // Thiết lập màu nền để dễ nhận biết
-        view.backgroundColor = .systemBackground
-        // Thêm một label hoặc button để kiểm tra xem ViewController có hiển thị không
-        navigationItem.title = "Document Scanner Example"
-        // Thêm nút "Camera"
-        let cameraButton = UIButton(type: .system)
-        cameraButton.setTitle("Camera", for: .normal)
-        cameraButton.addTarget(self, action: #selector(onPressedCameraBtn), for: .touchUpInside)
-        cameraButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(cameraButton)
-        
-        // Thêm nút "Photos"
-        let photosButton = UIButton(type: .system)
-        photosButton.setTitle("Photos", for: .normal)
-        photosButton.addTarget(self, action: #selector(onPressedPhotosBtn), for: .touchUpInside)
-        photosButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(photosButton)
-        
-        // Thiết lập vị trí của các nút
-        NSLayoutConstraint.activate([
-            cameraButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            cameraButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20),
-            
-            photosButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            photosButton.topAnchor.constraint(equalTo: cameraButton.bottomAnchor, constant: 20)
-        ])
-        
-        let output = DocumentScanner().greet()
-        documentScanner.delegate = self
-        documentScanner.navigationController = navigationController
-        print(output)
+//        view.backgroundColor = .systemBackground
+//        // Thêm một label hoặc button để kiểm tra xem ViewController có hiển thị không
+//        navigationItem.title = "Document Scanner Example"
+//        // Thêm nút "Camera"
+//        let cameraButton = UIButton(type: .system)
+//        cameraButton.setTitle("Camera", for: .normal)
+//        cameraButton.addTarget(self, action: #selector(onPressedCameraBtn), for: .touchUpInside)
+//        cameraButton.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(cameraButton)
+//        
+//        // Thêm nút "Photos"
+//        let photosButton = UIButton(type: .system)
+//        photosButton.setTitle("Photos", for: .normal)
+//        photosButton.addTarget(self, action: #selector(onPressedPhotosBtn), for: .touchUpInside)
+//        photosButton.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(photosButton)
+//        
+//        // Thiết lập vị trí của các nút
+//        NSLayoutConstraint.activate([
+//            cameraButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            cameraButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20),
+//            
+//            photosButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            photosButton.topAnchor.constraint(equalTo: cameraButton.bottomAnchor, constant: 20)
+//        ])
+//        documentScanner.delegate = self
+//        documentScanner.navigationController = navigationController
 
     }
 
     @IBAction func onPressedCameraBtn(_ sender: UIButton) {
-        documentScanner.openScanningByCamera()
+        documentScanner.openScannerCamera(from: self) {pdfPaths in
+            for path in pdfPaths {
+                print("pdfPath: \(path)")
+            }
+            
+        }
     }
     
     @IBAction func onPressedPhotosBtn(_ sender: UIButton) {
@@ -136,7 +138,12 @@ class ViewController: UIViewController, PHPickerViewControllerDelegate, Document
     }
     
     func onPushToImageListView() {
-        documentScanner.pushToImageListView(images: selectedImages)
+        documentScanner.pushToImageListView(images: selectedImages, from: self) {pdfPaths in
+            print("ViewController.onPushToImageListView")
+            for path in pdfPaths {
+                print("pdfPath: \(path)")
+            }
+        }
     }
 }
 

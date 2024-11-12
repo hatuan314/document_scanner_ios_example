@@ -17,6 +17,7 @@ public class DocumentScanner: ImageListViewControllerDelegate {
     public var navigationController: UINavigationController?
     
     private let cameraScanner = CameraScannerModel()
+    private let imageListViewController = ImageListViewController()
     
     public init(navigationController: UINavigationController? = nil) {
         self.navigationController = navigationController
@@ -27,7 +28,8 @@ public class DocumentScanner: ImageListViewControllerDelegate {
         return "Hello from MySwiftFramework!"
     }
     
-    public func openScanningByCamera() -> Void {
+    public func openScannerCamera() -> Void {
+        imageListViewController.delegate = self
         cameraScanner.startDocumentScanning();
         cameraScanner.completeHandler = {
             let images = self.cameraScanner.images
@@ -39,10 +41,15 @@ public class DocumentScanner: ImageListViewControllerDelegate {
     }
     
     public func pushToImageListView(images: [UIImage]?) -> Void {
-        var imageListViewController = ImageListViewController()
-        imageListViewController.delegate = self
+        if imageListViewController.delegate == nil {
+            imageListViewController.delegate = self
+        }
         imageListViewController.images = images ?? []
-        navigationController?.pushViewController(imageListViewController, animated: true)
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let rootViewController = windowScene.windows.first?.rootViewController {
+            rootViewController.present(imageListViewController, animated: true)
+        }
+//        navigationController?.pushViewController(imageListViewController, animated: true)
     }
     
     public func didFinishConvertingToPDF(pdfPaths: [String]) {
