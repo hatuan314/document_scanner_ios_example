@@ -10,46 +10,12 @@ import PhotosUI
 import DocumentScanner
 
 class ViewController: UIViewController, PHPickerViewControllerDelegate {
-    func didFinishConvertingToPDF(urlPaths: [String]) {
-        for (_, path) in urlPaths.enumerated() {
-            print("didFinishConvertingToPDF: \(path)")
-        }
-        
-    }
     
     var documentScanner = DocumentScanner()
     var selectedImages: [UIImage] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Thiết lập màu nền để dễ nhận biết
-//        view.backgroundColor = .systemBackground
-//        // Thêm một label hoặc button để kiểm tra xem ViewController có hiển thị không
-//        navigationItem.title = "Document Scanner Example"
-//        // Thêm nút "Camera"
-//        let cameraButton = UIButton(type: .system)
-//        cameraButton.setTitle("Camera", for: .normal)
-//        cameraButton.addTarget(self, action: #selector(onPressedCameraBtn), for: .touchUpInside)
-//        cameraButton.translatesAutoresizingMaskIntoConstraints = false
-//        view.addSubview(cameraButton)
-//        
-//        // Thêm nút "Photos"
-//        let photosButton = UIButton(type: .system)
-//        photosButton.setTitle("Photos", for: .normal)
-//        photosButton.addTarget(self, action: #selector(onPressedPhotosBtn), for: .touchUpInside)
-//        photosButton.translatesAutoresizingMaskIntoConstraints = false
-//        view.addSubview(photosButton)
-//        
-//        // Thiết lập vị trí của các nút
-//        NSLayoutConstraint.activate([
-//            cameraButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            cameraButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20),
-//            
-//            photosButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            photosButton.topAnchor.constraint(equalTo: cameraButton.bottomAnchor, constant: 20)
-//        ])
-//        documentScanner.delegate = self
-//        documentScanner.navigationController = navigationController
 
     }
 
@@ -87,14 +53,9 @@ class ViewController: UIViewController, PHPickerViewControllerDelegate {
         // Tạo biến để theo dõi số lượng ảnh đã tải
         var loadedImageCount = 0
         let totalImages = results.count
-        
-//        // Tạo một Dispatch Group
-//        let dispatchGroup = DispatchGroup()
-//
+    
         for result in results {
             if result.itemProvider.canLoadObject(ofClass: UIImage.self) {
-//                // Bắt đầu một công việc trong Dispatch Group
-//                dispatchGroup.enter()
                 
                 result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] (image, error) in
                     if let image = image as? UIImage {
@@ -121,8 +82,6 @@ class ViewController: UIViewController, PHPickerViewControllerDelegate {
                             }
                         }
                     }
-//                    // Kết thúc công việc khi tải xong ảnh (thành công hoặc thất bại)
-//                    dispatchGroup.leave()
                 }
             } else {
                 loadedImageCount += 1
