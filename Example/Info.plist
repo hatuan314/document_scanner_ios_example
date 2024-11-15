@@ -4,8 +4,12 @@
 <dict>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Get Images from Photos to scan document</string>
+    <key>PHPhotoLibraryPreventAutomaticLimitedAccessAlert</key>
+    <false/>
 	<key>NSCameraUsageDescription</key>
 	<string>User Camera to scan document</string>
+    <key>NSFileProviderUsageDescription</key>
+    <string>The application needs to access FileProvider to perform PDF file reading function.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

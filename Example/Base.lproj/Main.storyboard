@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="Wnv-yW-DbA">
-                                <rect key="frame" x="16" y="59.000000000000014" width="361" height="153.33333333333337"/>
+                                <rect key="frame" x="16" y="58.999999999999986" width="361" height="207.66666666666663"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Document Scanner Example" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mBh-c8-svA">
                                         <rect key="frame" x="0.0" y="0.0" width="361" height="28.666666666666668"/>
@@ -27,7 +27,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="dEA-9f-pct">
-                                        <rect key="frame" x="0.0" y="60.666666666666664" width="361" height="92.666666666666686"/>
+                                        <rect key="frame" x="0.0" y="60.666666666666686" width="361" height="147"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RmY-aF-0r8">
                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="38.333333333333336"/>
@@ -43,6 +43,14 @@
                                                 <buttonConfiguration key="configuration" style="filled" title="Photos"/>
                                                 <connections>
                                                     <action selector="onPressedPhotosBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ltm-HE-zGt"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ixK-zz-nhh">
+                                                <rect key="frame" x="0.0" y="108.66666666666667" width="361" height="38.333333333333329"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Loading"/>
+                                                <connections>
+                                                    <action selector="onPressLoadingButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yk6-7Z-Ral"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -76,7 +84,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
