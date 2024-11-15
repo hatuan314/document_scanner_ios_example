@@ -49,7 +49,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func onPressedPhotosBtn(_ sender: UIButton) {
-        DocumentScanner.shared.openScannerPhotosLibrary(images: nil, from: self) {pdfUrl in
+        DocumentScanner.shared.openScannerPhotosLibrary(images: nil, from: self, limit: 5) {pdfUrl in
             print("ViewController.onPushToImageListView")
             print("pdfPath: \(pdfUrl?.path)")
             
